@@ -12,7 +12,10 @@ class WeatherPlugin(AIAssistantPlugin):
         if "weather" in query.lower():
             temp = random.randint(20, 35)
             return f"The temperature is {temp} degrees Celsius"
-        return "Weather module can only handle weather queries"
+        elif "only" in query.lower():
+            return "Weather module can only handle weather queries"
+        else:
+            return None
     
 
 class JokesPlugin(AIAssistantPlugin):
@@ -23,9 +26,14 @@ class JokesPlugin(AIAssistantPlugin):
             "I told my AI a joke — now it’s training a humor model.",
             "Python programmers wear glasses because they can’t C."
         ]
+
         if "joke" in query.lower():
             return random.choice(joke)
-        return "Jokes module can only handle joke queries"
+        elif "only" in query.lower():
+            return "Jokes module can only handle joke queries"
+        else:
+            return None
+        
     
 class NewsPlugin(AIAssistantPlugin):
     def respond(self, query: str) -> str:
@@ -34,9 +42,13 @@ class NewsPlugin(AIAssistantPlugin):
             "New Python update brings performance boost.",
             "Scientists teach robots to write poetry — results are mixed."
         ]
+
         if "news" in query.lower():
             return f"Today's news: {random.choice(headlines)}"
-        return "News module can only handle news queries"
+        elif "only" in query.lower():
+            return "News module can only handle news queries"
+        else:
+            return None
     
 class Jarvis:
     def __init__(self):
@@ -70,9 +82,3 @@ def interactive_loop():
 if __name__ == "__main__":
     interactive_loop()
 
-# if __name__ == "__main__":
-#     jarvis = Jarvis()
-#     jarvis.handle_query("What's the weather like today?")
-#     jarvis.handle_query("Tell me a joke")
-#     jarvis.handle_query("What's the latest news?")
-#     jarvis.handle_query("Can you do something else?")
